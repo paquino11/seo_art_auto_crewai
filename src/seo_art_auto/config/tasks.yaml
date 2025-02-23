@@ -1,0 +1,30 @@
+website_analysis_task:
+  description: >
+    Extract business details and content context from {website}.
+  expected_output: >
+    - A summary of what the website is about.
+    - List of services or products offered.
+    - Content needs & potential blog topics.
+  agent: website_analyzer
+
+content_strategy_task:
+  description: >
+    Based on the website analysis, determine the best type of article to write.
+  expected_output: >
+    - Recommended one of the potential topics to write based on the website analysis.
+  agent: content_strategist
+
+seo_trend_task:
+  description: >
+    Based on the article topic recommended by the content strategist, research trending topics and keywords related to the website's niche.
+  expected_output: >
+    - A list of 5-10 trending keywords.
+    - Search volume and ranking difficulty analysis.
+  agent: seo_trend_researcher
+
+writing_task:
+  description: >
+    Write a fully optimized, engaging, and structured SEO article with the keywords provided by the seo_trend_researcher.
+  expected_output: >
+    - A 1500-2000 word SEO-friendly article in markdown format. No other text than the article.
+  agent: seo_writer

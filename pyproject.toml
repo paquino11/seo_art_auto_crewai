@@ -1,0 +1,24 @@
+[project]
+name = "seo_art_auto"
+version = "0.1.0"
+description = "seo_art_auto using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.100.1,<1.0.0",
+    "google-search-results>=2.4.2",
+]
+
+[project.scripts]
+seo_art_auto = "seo_art_auto.main:run"
+run_crew = "seo_art_auto.main:run"
+train = "seo_art_auto.main:train"
+replay = "seo_art_auto.main:replay"
+test = "seo_art_auto.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
