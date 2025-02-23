@@ -2,6 +2,8 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
 from .tools.google_trends_tool import GoogleTrendsTool
+from .tools.brave_search import BraveSearchTool
+from crewai_tools import DallETool
 
 @CrewBase
 class SeoArtAuto():
@@ -12,7 +14,7 @@ class SeoArtAuto():
 
 	scrape_website_tool = ScrapeWebsiteTool()
 	google_trends_tool = GoogleTrendsTool()
-	serper_tool = SerperDevTool()
+	dall_e_tool = DallETool()
 
 	@agent
 	def website_analyzer(self) -> Agent:
@@ -36,7 +38,14 @@ class SeoArtAuto():
 			verbose=True,
 			tools=[self.google_trends_tool]
 		)
-	
+
+	@agent
+	def seo_image_generator(self) -> Agent:
+		return Agent(
+			config=self.agents_config['seo_image_generator'],
+			verbose=True,
+			tools=[self.dall_e_tool]
+		)
 	@agent
 	def seo_writer(self) -> Agent:
 		return Agent(
@@ -60,6 +69,12 @@ class SeoArtAuto():
 	def seo_trend_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['seo_trend_task'],
+		)
+	
+	@task
+	def seo_image_generator_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['seo_image_generator_task'],
 		)
 
 	@task

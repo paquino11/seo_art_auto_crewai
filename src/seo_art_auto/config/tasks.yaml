@@ -22,9 +22,17 @@ seo_trend_task:
     - Search volume and ranking difficulty analysis.
   agent: seo_trend_researcher
 
+seo_image_generator_task:
+  description: >
+    Generate a list of 2 images related to the article topic.
+  expected_output: >
+    - A list of 2 images related to the article topic, with the image and the image description. Generate a simple image, not a complex one.
+  agent: seo_image_generator
+
+
 writing_task:
   description: >
-    Write a fully optimized, engaging, and structured SEO article with the keywords provided by the seo_trend_researcher.
+    Write a fully optimized, engaging, and structured SEO article with the keywords provided by the seo_trend_researcher and ALL the images provided by the seo_image_searcher.
   expected_output: >
-    - A 1500-2000 word SEO-friendly article in markdown format. No other text than the article.
+    - A 1500-2000 word SEO-friendly article in markdown format. No other text than the article and without ```markdown```.
   agent: seo_writer
