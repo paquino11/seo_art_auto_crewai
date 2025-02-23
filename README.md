@@ -1,54 +1,118 @@
-# SeoArtAuto Crew
+# SEO Article Auto Writer
 
-Welcome to the SeoArtAuto Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+## Overview
+SEO Article Auto Writer is an **AI automation tool** that generates SEO-optimized articles **based on real-time keyword trends and business analysis**. The project uses **CrewAI** agents to analyze a website, determine the best content strategy, find trending topics, and generate a high-quality SEO article.
 
-## Installation
+---
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+## How It Works
+The **SEO Article Auto Writer** follows a **step-by-step AI-driven process** to create an article tailored to the website’s niche and trending topics.
 
-First, if you haven't already, install uv:
+### **1. Website Analysis**
+- Scrapes and analyzes a given website.
+- Identifies its niche, services, and potential content topics.
 
+### **2. Content Strategy Generation**
+- Determines the most valuable article type (e.g., listicle, how-to guide, case study) for SEO.
+
+### **3. Keyword & Trend Research**
+- Uses **Google Trends** to find trending topics and high-ranking keywords.
+- Analyzes search intent, ranking difficulty, and keyword competitiveness.
+
+### **4. Article Writing**
+- Generates a **1500-2000 word** SEO-optimized article with proper structure, keyword integration, and readability.
+
+---
+
+## Installation & Setup
+### **1. Clone the repository**
 ```bash
-pip install uv
+git clone https://github.com/paquino11/seo_art_auto_crewai.git
+cd seo_art_auto_crewai
 ```
 
-Next, navigate to your project directory and install the dependencies:
+### **2. Create a virtual environment and activate it**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-(Optional) Lock the dependencies and install them by using the CLI command:
+### **3. Install dependencies**
 ```bash
 crewai install
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/seo_art_auto/config/agents.yaml` to define your agents
-- Modify `src/seo_art_auto/config/tasks.yaml` to define your tasks
-- Modify `src/seo_art_auto/crew.py` to add your own logic, tools and specific args
-- Modify `src/seo_art_auto/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
+### **4. Add Google Trends API**
 ```bash
-$ crewai run
+uv add google-trends-api
 ```
 
-This command initializes the seo_art_auto Crew, assembling the agents and assigning them tasks as defined in your configuration.
+### **5. Create a `.env` file and set up API keys**
+```bash
+export MODEL=gpt-4o-mini
+export OPENAI_API_KEY=your_openai_api_key
+export SERPER_API_KEY=your_serper_api_key
+export SERPAPI_API_KEY=your_serpapi_api_key
+```
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+### **6. Select website in `main.py`**
+Edit `main.py` to define the website to analyze:
+```python
+def run():
+    """
+    Run the crew.
+    """
+    inputs = {
+        'website': 'your_website_url',
+        'current_year': str(datetime.now().year)
+    }
+```
 
-## Understanding Your Crew
+### **7. Run the tool**
+```bash
+crewai run
+```
 
-The seo_art_auto Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+---
 
-## Support
+## CrewAI Agents
+The system uses **CrewAI** agents with distinct roles:
 
-For support, questions, or feedback regarding the SeoArtAuto Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+| **Agent**              | **Role**                                              |
+|------------------------|------------------------------------------------------|
+| **Website Analyzer**   | Scrapes website & extracts key business information |
+| **Content Strategist** | Determines the best article type for SEO based on the website's info            |
+| **SEO Trend Researcher** | Finds trending keywords & Google search trends  |
+| **SEO Writer**         | Generates a high-quality, optimized article         |
 
-Let's create wonders together with the power and simplicity of crewAI.
+---
+
+## Example Output
+An **SEO article** is generated in the `/output/article.md` file, structured as follows:
+
+```markdown
+# The Future of Real Estate Marketing: Top 5 Trends in 2024
+
+## Introduction
+In today’s digital age, real estate marketing is evolving rapidly. With the rise of AI and automation, businesses must stay ahead of the curve...
+
+## 1. AI-Powered Property Listings
+- AI-driven tools now help buyers find the perfect home.
+- Personalization improves customer engagement.
+
+## 2. Virtual Tours & Augmented Reality
+- Real estate firms are integrating VR technology for property viewings.
+
+...
+
+## Conclusion
+To stay competitive in 2024, real estate businesses must adapt to digital innovations and AI-powered strategies.
+```
+
+---
+
+## Contributing
+- Feel free to fork the repo and submit **pull requests**.
+- Report any **issues or suggestions** in the Issues tab.
+
+

@@ -7,6 +7,7 @@ requires-python = ">=3.10,<3.13"
 dependencies = [
     "crewai[tools]>=0.100.1,<1.0.0",
     "google-search-results>=2.4.2",
+    "google-trends-api>=2.2.6",
 ]
 
 [project.scripts]
