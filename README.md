@@ -6,7 +6,7 @@ SEO Article Auto Writer is an **AI automation tool** that generates SEO-optimize
 ---
 
 ## How It Works
-The **SEO Article Auto Writer** follows a **step-by-step AI-driven process** to create an article tailored to the website’s niche and trending topics.
+The **SEO Article Auto Writer** follows a **step-by-step AI-driven process** to create an article tailored to the website's niche and trending topics.
 
 ### **1. Website Analysis**
 - Scrapes and analyzes a given website.
@@ -55,23 +55,17 @@ export SERPER_API_KEY=your_serper_api_key
 export SERPAPI_API_KEY=your_serpapi_api_key
 ```
 
-### **6. Select website in `main.py`**
-Edit `main.py` to define the website to analyze:
-```python
-def run():
-    """
-    Run the crew.
-    """
-    inputs = {
-        'website': 'your_website_url',
-        'current_year': str(datetime.now().year)
-    }
+### **6. Run the Streamlit app**
+```bash
+streamlit run app.py
 ```
 
-### **7. Run the tool**
-```bash
-crewai run
-```
+### **7. Generate Articles**
+1. Open your browser and navigate to the local Streamlit app (usually http://localhost:8501)
+2. Enter the website URL you want to analyze
+3. Click "Submit" to start the article generation process
+4. Wait for the AI to generate your SEO-optimized article
+5. View or download the generated article from the "View Articles" tab
 
 ---
 
@@ -90,29 +84,8 @@ The system uses **CrewAI** agents with distinct roles:
 ## Example Output
 An **SEO article** is generated in the `/output/article.md` file, structured as follows:
 
-```markdown
-# The Future of Real Estate Marketing: Top 5 Trends in 2024
-
-## Introduction
-In today’s digital age, real estate marketing is evolving rapidly. With the rise of AI and automation, businesses must stay ahead of the curve...
-
-## 1. AI-Powered Property Listings
-- AI-driven tools now help buyers find the perfect home.
-- Personalization improves customer engagement.
-
-## 2. Virtual Tours & Augmented Reality
-- Real estate firms are integrating VR technology for property viewings.
-
-...
-
-## Conclusion
-To stay competitive in 2024, real estate businesses must adapt to digital innovations and AI-powered strategies.
-```
-
 ---
 
 ## Contributing
 - Feel free to fork the repo and submit **pull requests**.
 - Report any **issues or suggestions** in the Issues tab.
-
-
