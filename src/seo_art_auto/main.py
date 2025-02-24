@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+
+#src/seo_art_auto/main.py
 import sys
 import warnings
 
